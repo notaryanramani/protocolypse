@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package chat;
+
+option go_package = "github.com/notaryanramani/protocolypse/pb";
+
+service ChatService {
+  rpc SendMessage(MessageRequest) returns (MessageResponse);
+  rpc JoinStream(JoinRequest) returns (stream MessageResponse);
+}
+
+message MessageRequest {
+  string user = 1;
+  string message = 2;
+}
+
+message MessageResponse {
+  string user = 1;
+  string message = 2;
+  string timestamp = 3;
+}
+
+message JoinRequest {
+  string user = 1;
+}
